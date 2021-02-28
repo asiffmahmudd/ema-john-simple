@@ -1,0 +1,41 @@
+.header .logo img{
+    height: 80px;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.nav-bar{
+    background-color: black;
+    text-align: center;
+}
+
+.nav-bar ul li{
+    display: inline-block;
+    color: white;
+    padding: 20px 30px;
+    
+}
+
+.nav-bar ul{
+    margin-top: 10px;
+    margin-bottom: 0 !important;
+}
+
+.nav-bar ul li:hover{
+    background-color: grey;
+    color: black;
+}
+
+.search{
+    background-color: #282a2e;
+    padding: 35px;
+}
+
+.search form input{
+    width: 60%;
+    display: block;
+    margin: 0 auto;
+    padding-left: 10px;
+    height: 30px;
+}

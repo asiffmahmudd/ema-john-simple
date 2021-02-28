@@ -1,0 +1,14 @@
+.shop-container{
+    display: flex;
+    justify-content: center;
+}
+
+.product-container{
+    border-right: 1px solid grey;
+}
+
+.cart-details{
+    padding: 10px;
+    width: 30%;
+}
+

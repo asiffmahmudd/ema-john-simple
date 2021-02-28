@@ -1,0 +1,24 @@
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.single-product{
+    display: flex;
+    justify-content: left;
+    border-bottom: 1px solid grey;
+    padding: 20px;
+    margin-left: 20%;;
+}
+
+.product-img{
+    width: 20%;
+}
+
+.product-details{
+    width: 80%;
+    margin-left: 30px;;
+}
+
+
+
