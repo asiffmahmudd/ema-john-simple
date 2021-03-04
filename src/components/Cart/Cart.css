@@ -1,0 +1,35 @@
+button{
+    background-color: goldenrod;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.red{
+    color: red;
+}
+
+.left{
+    text-align: left;
+}
+
+.right{
+    float: right;
+}
+
+small{
+    display: block;
+}
+
+.center{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.order-details{
+    margin-top: 10px;
+}
+
+.order-details p{
+    margin: 0 !important;
+}

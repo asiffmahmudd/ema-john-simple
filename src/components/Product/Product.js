@@ -20,4 +20,4 @@ const Product = (props) => {
     );
 };
 
-export default Product;<h2>Thsi is a product</h2>
+export default Product;

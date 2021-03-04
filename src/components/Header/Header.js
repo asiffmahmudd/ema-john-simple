@@ -19,7 +19,7 @@ const Header = () => {
             </nav>
             <div className="search">
                 <form action="">
-                    <div class="search-box">
+                    <div className="search-box">
                         <input type="text" placeholder="Search Product"/> <FontAwesomeIcon className="cart" icon={faShoppingCart} />
                     </div>
                 </form>
