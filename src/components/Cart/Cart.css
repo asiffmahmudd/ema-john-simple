@@ -4,6 +4,10 @@ button{
     border-radius: 5px;
 }
 
+.review-btn{
+    text-align: center;
+}
+
 .red{
     color: red;
 }
@@ -18,12 +22,14 @@ button{
 
 small{
     display: block;
+    color: black;
 }
 
 .center{
     display: block;
     margin: 0 auto;
     text-align: center;
+    color: black;
 }
 
 .order-details{
@@ -32,4 +38,8 @@ small{
 
 .order-details p{
     margin: 0 !important;
+}
+
+.cart-container{
+    padding: 2rem;
 }
