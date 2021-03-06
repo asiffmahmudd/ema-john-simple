@@ -12,16 +12,16 @@ const Cart = (props) => {
     }
     return (
         <div>
-            <h3 className="center">Order Summary</h3>
+            <h5 className="center">Order Summary</h5>
             <p className="center">Items Ordered: {cart.length}</p>
             <div className="order-details">
-                <p><small><span className="left">Items price:</span> <span className="right">{itemsPrice}</span></small></p>
-                <p><small><span className="left">Shipping & Handling</span><span className="right">{shipping}</span></small></p>
+                <p><small><span className="left">Items price:</span> <span className="right">{format(itemsPrice)}</span></small></p>
+                <p><small><span className="left">Shipping & Handling</span><span className="right">{format(shipping)}</span></small></p>
                 <p><small><span className="left">Total Before Tax:</span><span className="right">{format(itemsPrice+shipping)}</span> </small></p>
                 <p><small><span className="left">Estimated Tax:</span><span className="right">{format(tax)}</span></small></p>
             </div>
-            <h3 className="red">Ordered Total: {format(itemsPrice+shipping+tax)}</h3>
-            <button className="center">Review Your Order</button>
+            <h5 className="red">Ordered Total: {format(itemsPrice+shipping+tax)}</h5>
+            <button className="btn btn-warning center">Review Your Order</button>
         </div>
     );
 };
