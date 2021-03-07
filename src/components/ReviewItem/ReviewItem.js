@@ -14,7 +14,7 @@ const ReviewItem = (props) => {
             </div>
             <div className="col-md-8">
                 <div className="product-details">
-                    <h4>{name}</h4>
+                    <a href={"/product/"+key}><h4>{name}</h4></a>
                     <p>Price: {price}</p>
                     <p>By {seller}</p>
                     <p>Quantity: {quantity}</p>

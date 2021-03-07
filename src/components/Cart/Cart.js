@@ -21,9 +21,9 @@ const Cart = (props) => {
                 <p><small><span className="left">Estimated Tax:</span><span className="right">{format(tax)}</span></small></p>
             </div>
             <h5 className="red">Ordered Total: {format(itemsPrice+shipping+tax)}</h5>
-            <div className="review-btn">
-                <Link to={"/review/"}><button className="btn btn-warning center">Review Your Order</button></Link>
-            </div>
+            {
+                props.children
+            }
            
         </div>
     );
