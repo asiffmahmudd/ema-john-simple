@@ -5,10 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { UserContext } from '../../App';
 import { Link } from 'react-router-dom';
-
-import firebase from "firebase/app";
-import "firebase/auth";
-
+import { handleSignOut } from '../Login/firebaseManager';
 
 const Header = () => {
     
@@ -16,16 +13,13 @@ const Header = () => {
     let signStatus;
     const {displayName, email} = loggedInUser;
 
-    const handleSignOut = () => {
-        firebase.auth().signOut().then(() => {
-            setLoggedInUser({});
-        }).catch((error) => {
-            console.log(error);
-        });
+    const signOut = () => {
+        handleSignOut();
+        setLoggedInUser({});
     }
 
     if(loggedInUser.displayName){
-        signStatus = <li onClick={handleSignOut}>Sign Out</li>;
+        signStatus = <li onClick={signOut}>Sign Out</li>;
     }
     else{
         signStatus = <li><Link to="/login">Sign In</Link></li>;

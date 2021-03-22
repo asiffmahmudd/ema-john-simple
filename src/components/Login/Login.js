@@ -1,36 +1,23 @@
 import React, { useContext } from 'react';
-import firebase from "firebase/app";
-import "firebase/auth";
 import './Login.css';
-import firebaseConfig from '../../firebaseConfig';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router';
+import { initializeLoginFramework, handleSignInUsing } from './firebaseManager';
 
-if(firebase.apps.length === 0) {
-    firebase.initializeApp(firebaseConfig);
-}
+initializeLoginFramework();
 
 const Login = () => {
-
-
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     let history = useHistory();
     let location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
 
-    const handleSignIn = () => {
-        var provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth()
-        .signInWithPopup(provider)
-        .then((result) => {
-            // var credential = result.credential;
-            // var token = credential.accessToken;
-            // var user = result.user;
-            setLoggedInUser(result.user);
-            history.replace(from);
+    const handleSignIn = (medium) => {
+        handleSignInUsing(medium)
+        .then( result => {
             console.log(result);
-        }).catch((error) => {
-            console.log(error);
+            setLoggedInUser(result);
+            history.replace(from);
         });
     }
     
@@ -49,7 +36,7 @@ const Login = () => {
                     <button type="submit" className="col-md-12 btn btn-primary">Sign In</button>
                 </form>
                 <hr/>
-                <button onClick={handleSignIn} className="btn btn-danger mt-3 shadow col-md-12">Sign in with Google</button>
+                <button onClick={() => {handleSignIn("google")}} className="btn btn-danger mt-3 shadow col-md-12">Sign in with Google</button>
             </div>
             
         </div>

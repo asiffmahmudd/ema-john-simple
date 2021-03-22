@@ -16,7 +16,7 @@ export const handleSignInUsing = (provider) => {
     return firebase.auth()
     .signInWithPopup(provider)
     .then((result) => {
-        return result;
+        return result.user;
     }).catch((error) => {
         console.log(error);
     });
@@ -24,7 +24,7 @@ export const handleSignInUsing = (provider) => {
 
 export const handleSignOut = () => {
     firebase.auth().signOut().then(() => {
-        
+        return;
     }).catch((error) => {
         console.log(error);
     });
