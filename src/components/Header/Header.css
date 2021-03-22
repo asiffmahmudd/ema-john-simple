@@ -17,6 +17,10 @@
     
 }
 
+.nav-bar ul li a{
+    color: white;
+}
+
 .nav-bar ul{
     margin-top: 10px;
     margin-bottom: 0 !important;
@@ -25,6 +29,7 @@
 .nav-bar ul li:hover{
     background-color: grey;
     color: black;
+    cursor: pointer;
 }
 
 .search{
