@@ -16,9 +16,18 @@ export const handleSignInUsing = (provider) => {
     return firebase.auth()
     .signInWithPopup(provider)
     .then((result) => {
-        return result.user;
+        const {displayName, photoURL, email} = result.user;
+        const signedInUser = {
+            isSignedIn: true,
+            displayName: displayName,
+            email: email,
+            photo: photoURL,
+            success: true
+        };
+        return signedInUser;
+        // return result.user;
     }).catch((error) => {
-        console.log(error);
+        alert(error.message);
     });
 }
 
@@ -26,7 +35,7 @@ export const handleSignOut = () => {
     firebase.auth().signOut().then(() => {
         return;
     }).catch((error) => {
-        console.log(error);
+        alert(error.message);
     });
 }
 

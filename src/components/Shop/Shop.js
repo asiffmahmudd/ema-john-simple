@@ -18,7 +18,6 @@ const Shop = () => {
     useEffect(() =>{
         const savedCart = getDatabaseCart();
         const productKeys = Object.keys(savedCart);
-        console.log(savedCart);
         fetch('http://localhost:4000/productsByKeys', {
             method: 'POST',
             headers: {

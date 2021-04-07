@@ -3,13 +3,11 @@ import { getDatabaseCart, processOrder, removeFromDatabaseCart } from '../../uti
 import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import './Review.css';
-import happyImage from '../../images/giphy.gif';
 import { useHistory } from 'react-router';
 
 const Review = () => {
 
     const [cart, setCart] = useState([]);
-    const [orderPlaced, setOrderPlaced] = useState(false);
     const history = useHistory();
 
     useEffect(() => {
@@ -45,13 +43,13 @@ const Review = () => {
     }
 
     const toCheckout = () => {
-        history.push('/shipment');
+        if(cart.length > 0){
+            history.push('/shipment');
+        }
+        else{
+            alert("Please add an item in the cart");
+        }
     }
-
-    // let thankYou;
-    // if(orderPlaced){
-    //     thankYou = <img src={happyImage} alt="THank you"/>;
-    // }
 
     return (
         <div className="review">
@@ -62,7 +60,6 @@ const Review = () => {
                             cart.map(pd => <ReviewItem removeItem={removeItem} cart={cart} product={pd} key={pd.key}></ReviewItem>)
                         }
                     </div>
-                    {/* {thankYou} */}
                 </div>
                 <div className="col-md-4">
                     <div className="cart">  

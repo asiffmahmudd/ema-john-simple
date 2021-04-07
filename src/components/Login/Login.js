@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './Login.css';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router';
@@ -8,6 +8,14 @@ initializeLoginFramework();
 
 const Login = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [user, setUser] = useState({
+        isSignedIn: false,
+        displayName: '',
+        email: '',
+        password: '',
+        photo: ''    
+    });
+
     let history = useHistory();
     let location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
@@ -15,7 +23,7 @@ const Login = () => {
     const handleSignIn = (medium) => {
         handleSignInUsing(medium)
         .then( result => {
-            console.log(result);
+            setUser(result);
             setLoggedInUser(result);
             history.replace(from);
         });

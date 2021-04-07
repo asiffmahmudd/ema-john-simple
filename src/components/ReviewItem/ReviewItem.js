@@ -1,15 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const ReviewItem = (props) => {
-    const {name, img, price,key,seller, quantity, star, starCount} = props.product;
+    const {name, img, price,key,seller, quantity} = props.product;
 
     
     return (
         <div className="row single-product">
             <div className="col-md-4">
                 <div className="product-img">
-                    <img src={img} alt="product image"/>
+                    <img src={img} alt=""/>
                 </div>
             </div>
             <div className="col-md-8">

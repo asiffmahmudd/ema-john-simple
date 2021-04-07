@@ -11,7 +11,7 @@ const Header = () => {
     
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     let signStatus;
-    const {displayName, email} = loggedInUser;
+    const {email} = loggedInUser;
 
     const signOut = () => {
         handleSignOut();
