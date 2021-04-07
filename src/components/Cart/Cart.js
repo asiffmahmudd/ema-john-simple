@@ -1,10 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './Cart.css'
+import './Cart.css';
 
 const Cart = (props) => {
     const cart = props.cart;
-    let itemsPrice = cart.reduce((total, product) => total + product.price*product.quantity, 0);
+    let itemsPrice = cart.reduce((total, product) => total + product.price*product.quantity || 1, 0);
     let shipping = cart.reduce((total, product) => total+product.shipping, 0);
     let tax = itemsPrice*0.10;
     function format(x){

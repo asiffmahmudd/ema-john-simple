@@ -22,7 +22,7 @@ const Header = () => {
         signStatus = <li onClick={signOut}>Sign Out</li>;
     }
     else{
-        signStatus = <li><Link to="/login">Sign In</Link></li>;
+        signStatus = <Link to="/login"><li>Sign In</li></Link>;
     }
 
     
@@ -36,7 +36,7 @@ const Header = () => {
                 <ul>
                     <Link to="/shop"><li>Shop</li></Link>
                     <Link to="/review"><li>Order Review</li></Link>
-                    <Link to="/inventory"><li>Manage Inventory Here</li></Link>
+                    <Link to="/inventory"><li>Manage Inventory</li></Link>
                     {signStatus}
                     <li>{email}</li>
                 </ul>
