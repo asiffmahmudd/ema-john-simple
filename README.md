@@ -1,6 +1,7 @@
 <h1><a href="https://ema-john-10238.web.app/" target="_blank">See it live here</a></h1>
 
 <h2>
+  Technologies Used:
   <ul>
     <li>React</li>
     <li>Mongodb</li>
