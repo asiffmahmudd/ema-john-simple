@@ -14,7 +14,7 @@ const Shipment = () => {
         const savedCart = getDatabaseCart();
         const orderDetails = {user: loggedInUser, products: savedCart, shipment: data, orderTime: new Date()};
 
-        fetch('http://localhost:4000/addOrder', {
+        fetch('https://vast-lowlands-27498.herokuapp.com/addOrder', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
