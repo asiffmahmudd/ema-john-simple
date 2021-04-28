@@ -21,14 +21,19 @@ export const UserContext = createContext();
 function App() {
 
   const [loggedInUser, setLoggedInUser] = useState({});
+  const [search, setSearch] = useState("");
+
+  const handleSearch = (event) => {
+      setSearch(event.target.value);
+  }
 
   return (
     <UserContext.Provider value = {[loggedInUser, setLoggedInUser]}>
       <Router>
-        <Header></Header>
+        <Header handleSearch={handleSearch}></Header>
         <Switch>
           <Route path="/shop">
-            <Shop></Shop>
+            <Shop search={search}></Shop>
           </Route>
           <Route path="/review">
             <Review></Review>
@@ -37,7 +42,7 @@ function App() {
             <Inventory></Inventory>
           </PrivateRoute>
           <Route exact path="/">
-            <Shop></Shop>
+            <Shop search={search}></Shop>
           </Route>
           <Route path="/product/:productKey">
             <ProductDetails></ProductDetails>

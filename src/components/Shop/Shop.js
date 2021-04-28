@@ -5,15 +5,27 @@ import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css';
 
-const Shop = () => {
+const Shop = ({search}) => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
+    console.log(search);
 
     useEffect(() => {
-        fetch('https://vast-lowlands-27498.herokuapp.com/products')
+        document.getElementById("spinner").style.display = "block";
+        let url = "";
+        if(search === ""){
+            url = 'https://vast-lowlands-27498.herokuapp.com/products';
+        }
+        else{
+            url = "https://vast-lowlands-27498.herokuapp.com/products/"+search;
+        }
+        fetch(url)
         .then(res => res.json())
-        .then(data => setProducts(data))
-    }, [])
+        .then(data => {
+            document.getElementById("spinner").style.display = "none";
+            setProducts(data);
+        })
+    }, [search])
 
     useEffect(() =>{
         const savedCart = getDatabaseCart();
@@ -61,7 +73,12 @@ const Shop = () => {
 
     return (
         <div className="shop-container">
-            <div className="product-container">
+            <div className="product-container" >
+                <div className="text-center mt-3 mr-5" id="spinner" style={{display:'none'}}> 
+                    <div className="spinner-border text-secondary" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </div>
                 {
                     products.map(product => <Product showButton={true} handleAddButton={handleAddButton} product={product} key={product.key}></Product>)
                 }

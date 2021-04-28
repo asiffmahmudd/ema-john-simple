@@ -7,7 +7,7 @@ import { UserContext } from '../../App';
 import { Link } from 'react-router-dom';
 import { handleSignOut } from '../Login/firebaseManager';
 
-const Header = () => {
+const Header = ({handleSearch}) => {
     
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     let signStatus;
@@ -44,7 +44,7 @@ const Header = () => {
             <div className="search">
                 <form action="">
                     <div className="search-box">
-                        <input type="text" placeholder="Search Product"/> <FontAwesomeIcon className="cart" icon={faShoppingCart} />
+                        <input type="text" onChange={handleSearch} placeholder="Search Product"/> <FontAwesomeIcon className="cart" icon={faShoppingCart} />
                     </div>
                 </form>
             </div>
