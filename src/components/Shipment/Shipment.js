@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { getDatabaseCart, processOrder } from '../../utilities/databaseManager';
 import { useForm } from 'react-hook-form';
-import { UserContext } from '../../App';
 import './Shipment.css'
 import { useHistory } from 'react-router';
+import { useAuth } from '../../Context/AuthContext';
 
 const Shipment = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const {loggedInUser, setLoggedInUser} = useAuth();
     let history = useHistory();
     
     const onSubmit = data => {
@@ -32,7 +32,6 @@ const Shipment = () => {
         
     }
 
-    // console.log(watch("name")); // watch input value by passing the name of it
     return (
         <div className="container">
             <div className="row mt-5">

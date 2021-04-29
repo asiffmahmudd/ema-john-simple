@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header/Header';
 import Shop from './components/Shop/Shop';
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 import {
   BrowserRouter as Router,
@@ -15,8 +15,10 @@ import ProductDetails from './components/Productdetails/ProductDetails';
 import Login from './components/Login/Login';
 import Shipment from './components/Shipment/Shipment';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import { initializeLoginFramework } from './components/Login/firebaseManager';
+import { AuthProvider } from './Context/AuthContext';
 
-export const UserContext = createContext();
+const app = initializeLoginFramework();
 
 function App() {
 
@@ -28,7 +30,7 @@ function App() {
   }
 
   return (
-    <UserContext.Provider value = {[loggedInUser, setLoggedInUser]}>
+    <AuthProvider>
       <Router>
         <Header handleSearch={handleSearch}></Header>
         <Switch>
@@ -58,7 +60,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </UserContext.Provider>
+    </AuthProvider>
   );
 }
 

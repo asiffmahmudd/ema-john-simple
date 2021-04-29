@@ -8,7 +8,6 @@ import './Shop.css';
 const Shop = ({search}) => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
-    console.log(search);
 
     useEffect(() => {
         document.getElementById("spinner").style.display = "block";
@@ -42,15 +41,6 @@ const Shop = ({search}) => {
             products.map(product => product.quantity = savedCart[product.key]);
             setCart(products);
         })
-        
-        // if(products.length){
-        //     const newCart = productKeys.map(key => {
-        //         const singleProduct = products.find(product => product.key === key);
-        //         singleProduct.quantity = savedCart[key];
-        //         return singleProduct;
-        //     });
-        //     setCart(newCart);
-        // }
     },[]);
 
     const handleAddButton = (product) => {
@@ -73,24 +63,26 @@ const Shop = ({search}) => {
 
     return (
         <div className="shop-container">
-            <div className="product-container" >
-                <div className="text-center mt-3 mr-5" id="spinner" style={{display:'none'}}> 
-                    <div className="spinner-border text-secondary" role="status">
-                        <span className="sr-only">Loading...</span>
-                    </div>
-                </div>
-                {
-                    products.map(product => <Product showButton={true} handleAddButton={handleAddButton} product={product} key={product.key}></Product>)
-                }
-            </div>
-            <div className="cart-details">
-                <Cart cart={cart}>
-                    <Link to={"/review/"}>
-                        <div className="review-btn">
-                            <button className="btn btn-warning center">Review Your Order</button>
+            <div className="row">
+                <div className="product-container col-md-9" style={{paddingRight:'0px'}}>
+                    <div className="text-center mt-3 mr-5" id="spinner" style={{display:'none'}}> 
+                        <div className="spinner-border text-secondary" role="status">
+                            <span className="sr-only">Loading...</span>
                         </div>
-                    </Link>
-                </Cart>
+                    </div>
+                    {
+                        products.map(product => <Product showButton={true} handleAddButton={handleAddButton} product={product} key={product.key}></Product>)
+                    }
+                </div>
+                <div className="cart-details col-md-3">
+                    <Cart cart={cart}>
+                        <Link to={"/review/"}>
+                            <div className="review-btn">
+                                <button className="btn btn-warning center">Review Your Order</button>
+                            </div>
+                        </Link>
+                    </Cart>
+                </div>
             </div>
         </div>
     );

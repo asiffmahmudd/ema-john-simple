@@ -3,22 +3,25 @@ import logo from '../../images/logo.png';
 import './Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { UserContext } from '../../App';
 import { Link } from 'react-router-dom';
 import { handleSignOut } from '../Login/firebaseManager';
+import { useAuth } from '../../Context/AuthContext';
 
 const Header = ({handleSearch}) => {
-    
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+
+    const {loggedInUser, setLoggedInUser} = useAuth();
     let signStatus;
-    const {email} = loggedInUser;
+    
+    let email;
+    if(loggedInUser?.email)
+        email = loggedInUser.email;
 
     const signOut = () => {
         handleSignOut();
         setLoggedInUser({});
     }
 
-    if(loggedInUser.displayName){
+    if(loggedInUser?.displayName){
         signStatus = <li onClick={signOut}>Sign Out</li>;
     }
     else{

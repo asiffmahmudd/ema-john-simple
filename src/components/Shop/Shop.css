@@ -1,13 +1,23 @@
-.shop-container{
-    display: flex;
-    justify-content: center;
-}
+
 
 .product-container{
     border-right: 1px solid grey;
 }
 
 .cart-details{
-    width: 50%;
+    position: fixed;
+    top: 0;
 }
 
+.row{
+    margin: 0 !important;
+}
+
+@media(max-width:767px){
+    .cart-details{
+        order: 1;
+    }
+    .product-container{
+        order: 2;
+    }
+}
