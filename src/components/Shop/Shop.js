@@ -8,9 +8,11 @@ import './Shop.css';
 const Shop = ({search}) => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         document.getElementById("spinner").style.display = "block";
+        setLoading(true);
         let url = "";
         if(search === ""){
             url = 'https://vast-lowlands-27498.herokuapp.com/products';
@@ -23,6 +25,7 @@ const Shop = ({search}) => {
         .then(data => {
             document.getElementById("spinner").style.display = "none";
             setProducts(data);
+            setLoading(false);
         })
     }, [search])
 
@@ -70,6 +73,12 @@ const Shop = ({search}) => {
                             <span className="sr-only">Loading...</span>
                         </div>
                     </div>
+                    {
+                        !loading && products.length === 0 &&
+                        <div className="text-center mt-3 mr-5"> 
+                            <h1>No Products found</h1>
+                        </div>
+                    }
                     {
                         products.map(product => <Product showButton={true} handleAddButton={handleAddButton} product={product} key={product.key}></Product>)
                     }
