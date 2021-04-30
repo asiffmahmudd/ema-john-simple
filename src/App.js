@@ -15,14 +15,10 @@ import ProductDetails from './components/Productdetails/ProductDetails';
 import Login from './components/Login/Login';
 import Shipment from './components/Shipment/Shipment';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import { initializeLoginFramework } from './components/Login/firebaseManager';
 import { AuthProvider } from './Context/AuthContext';
 
-const app = initializeLoginFramework();
 
 function App() {
-
-  const [loggedInUser, setLoggedInUser] = useState({});
   const [search, setSearch] = useState("");
 
   const handleSearch = (event) => {

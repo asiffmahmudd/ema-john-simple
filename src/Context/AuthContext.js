@@ -15,8 +15,19 @@ export function AuthProvider({ children }) {
   
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
-      setLoggedInUser(user)
-      setLoading(false)
+        let signedInUser = null;
+        if(user){
+          const {displayName, photoURL, email} = user;
+          signedInUser = {
+              isSignedIn: true,
+              displayName: displayName,
+              email: email,
+              photo: photoURL,
+              success: true
+          };
+        }
+        setLoggedInUser(signedInUser);
+        setLoading(false);
     })
 
     return unsubscribe

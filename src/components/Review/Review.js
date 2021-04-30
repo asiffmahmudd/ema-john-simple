@@ -53,6 +53,11 @@ const Review = () => {
 
     return (
         <div className="review">
+            <div className="text-center mt-3 mr-5" id="spinner" style={{display:'none'}}> 
+                <div className="spinner-border text-secondary" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+            </div>
             <div className="row">
                 <div className="col-md-8 cart-items-container">
                     <div className="cart-items">

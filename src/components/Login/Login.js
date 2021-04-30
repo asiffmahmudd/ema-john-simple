@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import './Login.css';
-import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router';
 import { handleSignInUsing } from './firebaseManager';
 import { useAuth } from '../../Context/AuthContext';
@@ -24,7 +23,17 @@ const Login = () => {
     const handleSignIn = (medium) => {
         handleSignInUsing(medium)
         .then( result => {
-        
+            let signedInUser;
+            if(result){
+                const {displayName, photoURL, email} = result;
+                signedInUser = {
+                    isSignedIn: true,
+                    displayName: displayName,
+                    email: email,
+                    photo: photoURL,
+                    success: true
+                };
+              }
             setUser(result);
             setLoggedInUser(result);
             history.replace(from);
@@ -32,6 +41,12 @@ const Login = () => {
     }
 
     return (
+        <>
+        <div className="text-center mt-3 mr-5" id="spinner" style={{display:'none'}}> 
+            <div className="spinner-border text-secondary" role="status">
+                <span className="sr-only">Loading...</span>
+            </div>
+        </div>
         <div className="row p-5">
             <div className="col-md-4 shadow-lg mx-auto mt-3 p-4 rounded">
                 {/* <form className="mt-4">
@@ -48,6 +63,7 @@ const Login = () => {
             </div>
             
         </div>
+        </>
     );
 };
 
