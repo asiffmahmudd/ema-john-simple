@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { serverUrl } from '../../serverUrl';
 import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
@@ -15,10 +16,10 @@ const Shop = ({search}) => {
         setLoading(true);
         let url = "";
         if(search === ""){
-            url = 'https://vast-lowlands-27498.herokuapp.com/products';
+            url = serverUrl+'/products';
         }
         else{
-            url = "https://vast-lowlands-27498.herokuapp.com/products/"+search;
+            url = serverUrl+"/products/"+search;
         }
         fetch(url)
         .then(res => res.json())
@@ -32,7 +33,7 @@ const Shop = ({search}) => {
     useEffect(() =>{
         const savedCart = getDatabaseCart();
         const productKeys = Object.keys(savedCart);
-        fetch('https://vast-lowlands-27498.herokuapp.com/productsByKeys', {
+        fetch(serverUrl+'/productsByKeys', {
             method: 'POST',
             headers: {
                 'Content-Type' : 'application/json'

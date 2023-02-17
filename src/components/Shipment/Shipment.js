@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import './Shipment.css'
 import { useHistory } from 'react-router';
 import { useAuth } from '../../Context/AuthContext';
+import { serverUrl } from '../../serverUrl';
 
 const Shipment = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -14,7 +15,7 @@ const Shipment = () => {
         const savedCart = getDatabaseCart();
         const orderDetails = {user: loggedInUser, products: savedCart, shipment: data, orderTime: new Date()};
 
-        fetch('https://vast-lowlands-27498.herokuapp.com/addOrder', {
+        fetch(serverUrl+'/addOrder', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -4,6 +4,7 @@ import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import './Review.css';
 import { useHistory } from 'react-router';
+import { serverUrl } from '../../serverUrl';
 
 const Review = () => {
 
@@ -14,7 +15,7 @@ const Review = () => {
         const savedCart = getDatabaseCart();
         const productKeys = Object.keys(savedCart);
 
-        fetch('https://vast-lowlands-27498.herokuapp.com/productsByKeys', {
+        fetch(serverUrl+'/productsByKeys', {
             method: 'POST',
             headers: {
                 'Content-Type' : 'application/json'
